@@ -24,6 +24,8 @@ Le comportement du moteur n'est donc pas explicable avec le modèle à une seule
 Traditionnelement, les mesures à effectuer nécessiterait un générateur de fonction, un amplificateur (pour amplifier le signal) et un oscilloscope (ou la combinaison wattmètre + ampèremètre + voltmètre assez précis). Il va sans dire que ces équipements sont dispendieux. 
 
 Pour remplacer le générateur de fonction et l'amplificateur, l'amplificateur audio HiFi ZK-1002M (100W), normalement destiné au contrôle d'haut-parleurs.
+![plot](./Images/zk-1002m.jpg) 
+
 
 ### Méthode utilisée
 
