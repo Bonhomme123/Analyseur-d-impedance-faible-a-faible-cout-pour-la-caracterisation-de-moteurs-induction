@@ -19,17 +19,22 @@ Dans les documents de références du moteur, on remarque que la courbe de coupl
 
 Le comportement du moteur n'est donc pas explicable avec le modèle à une seule cage.
 
+### Méthode utilisée
+
+La méthode employée est décrite dans cet article[[1]](#1). Il s'agit d'étudier la réponse en fréquence au bornes de deux phases du moteur, alors que le rotor est au repos. Un algorithme d'optimisation par la méthode des moindres carrés est ensuite utilisé pour l'identification des paramètres. 
+
 ### Équipement utilisé
 
 Traditionnelement, les mesures à effectuer nécessiterait un générateur de fonction, un amplificateur (pour amplifier le signal) et un oscilloscope (ou la combinaison wattmètre + ampèremètre + voltmètre assez précis). Il va sans dire que ces équipements sont dispendieux. 
 
-Pour remplacer le générateur de fonction et l'amplificateur, l'amplificateur audio HiFi ZK-1002M (100W), normalement destiné au contrôle d'haut-parleurs.
-![plot](./Images/zk-1002m.jpg) 
+Pour remplacer le générateur de fonction et l'amplificateur, l'amplificateur audio HiFi ZK-1002M (100W), normalement destiné au contrôle d'haut-parleurs. Une résistance de puissance de 5 Ohm (100W) est mis en série avec les phases du moteur afin de simuler l'impédance d'un haut-parleur.
+
+Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opérationnels, sont utilisés pour prendre les mesures nécessaires.
+
+<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
 
-### Méthode utilisée
 
-La méthode employée est décrite dans cet article[[1]](#1). Il s'agit d'étudier la réponse en fréquence au bornes de deux phases du moteur, alors que le rotor est au repos. Un algorithme d'optimisation par la méthode des moindres carrés est ensuite utilisé pour l'identification des paramètres. 
 
 
 ## Mesures
