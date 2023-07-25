@@ -2,7 +2,7 @@
 Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction.  -  Low cost method for parameters identifications of induction motor's equivalent circuit.
 ## Objectif
 
-L'objectif de ce projet est de mesurer la réponse en fréquence d'un moteur à induction à double cage d'écureuil, au repos, afin d'en identifier les paramètres du circuits équivalent. Ce circuit est le suivant:
+L'objectif de ce projet est de mesurer la réponse en fréquence d'un **moteur à induction à double cage d'écureuil**, au repos, afin d'en identifier les paramètres du circuits équivalent. Ce circuit est le suivant:
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
@@ -23,15 +23,23 @@ Le comportement du moteur n'est donc pas explicable avec le modèle à une seule
 
 La méthode employée est décrite dans cet article[[1]](#1). Il s'agit d'étudier la réponse en fréquence au bornes de deux phases du moteur, alors que le rotor est au repos. Un algorithme d'optimisation par la méthode des moindres carrés est ensuite utilisé pour l'identification des paramètres. 
 
-En d'autres mots, des signaux électrique sinusïdaux dont la fréquence varie entre 0 et 150 Hz, sont ainsi envoyé entre deux phases. L'amplitude doit être ajustée de façon à éviter toute saturation. Ensuite, la tension et le courant sont mesurés à haute-fréquence afin de calculer la tension RMS, le courant RMS et la puissance moyenne.
+En d'autres mots, des signaux électrique sinusïdaux dont la fréquence varie entre 0 et 150 Hz, sont ainsi envoyé entre deux phases. L'amplitude doit être ajustée de façon à éviter toute saturation. Ensuite, la tension et le courant sont mesurés à haute-fréquence afin de calculer la **tension RMS**, le **courant RMS** et la **puissance moyenne**.
 
-Ces 3 variables permettent d'obtenir les courbes de résistances et de réactances en fonction de la fréquence grâce au formules ci-dessous:
+$` V_{RMS} = \sqrt{\frac{\sum \ _{t=0} ^N \ v(t)^2}{N}}`$
+
+$` I_{RMS} = \sqrt{\frac{\sum \ _{t=0} ^N \ i(t)^2}{N}}`$
+
+$` P_{moy} = \frac{\sum \ _{t=0} ^N \ i(t)\cdot v(t)}{N}`$
+
+Ces 3 variables permettent d'obtenir les courbes de **résistances** et de **réactances** en fonction de la fréquence grâce au formules ci-dessous:
 
 $`|Z_{eq}| = \frac{V_{RMS}}{I_{RMS}}`$
 
 $` R_{eq} = \frac{P_{moy}}{I_{RMS}^2}`$
 
-$` X_{eq} = \sqrt{|Z_{eq}|^2-R_{eq}^2`$
+$` X_{eq} = \sqrt{|Z_{eq}|^2-R_{eq}^2}`$
+
+En traçant les courbes de $` R_{eq}`$ et de $`X_{eq}`$ en fonction de la fréquence, on peut identifier les paramètres du circuit équivalent. 
 
 ### Équipement utilisé
 
