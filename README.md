@@ -54,13 +54,13 @@ Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opé
 
 
 
+## Circuit
+Le circuit est disponible ici et est visualisable avec un logiciel comme KiCad.
+
 
 ## Mesures
-
-à venir
-
-## Circuit
-
+ À venir...
+  (protocole, callibration etc.)
 ## Analyse
 
 ## Résultats
