@@ -1,12 +1,17 @@
 # Identification-des-parametres-du-moteur-induction-avec-ESP32
 Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction.  -  Low cost method for parameters identifications of induction motor's equivalent circuit.
+
 ## Objectif
 
-L'objectif de ce projet est de mesurer la réponse en fréquence d'un **moteur à induction à double cage d'écureuil**, au repos, afin d'en identifier les paramètres du circuits équivalent. Ce circuit est le suivant:
+L'objectif de ce projet est de modéliser le **moteur à induction à double cages d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles.
+
+Le modèle standard du moteur à induction à cages doubles est basé sur le circuit circuit équivalent suivant:
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
 [Source de l'image](https://www.researchgate.net/publication/355849345_Influence_of_Equivalent_Circuit_Resistances_on_Operating_Parameters_on_Three-Phase_Induction_Motors_with_Powers_up_to_50_kW/figures?lo=1)
+
+Le vrai défi réside donc dans l'identification des huits paramètres du circuit.
 
 
 #### Comment reconnaître un moteur à cage double?
