@@ -9,7 +9,7 @@ L'objectif de ce projet est de mesurer la réponse en fréquence d'un moteur à 
 [Source de l'image](https://www.researchgate.net/publication/355849345_Influence_of_Equivalent_Circuit_Resistances_on_Operating_Parameters_on_Three-Phase_Induction_Motors_with_Powers_up_to_50_kW/figures?lo=1)
 
 
-### Comment reconnaître un moteur à cage double?
+#### Comment reconnaître un moteur à cage double?
 
 Dans les documents de références du moteur, on remarque que la courbe de couple est similaire à celle-ci:
 
@@ -22,6 +22,16 @@ Le comportement du moteur n'est donc pas explicable avec le modèle à une seule
 ### Méthode utilisée
 
 La méthode employée est décrite dans cet article[[1]](#1). Il s'agit d'étudier la réponse en fréquence au bornes de deux phases du moteur, alors que le rotor est au repos. Un algorithme d'optimisation par la méthode des moindres carrés est ensuite utilisé pour l'identification des paramètres. 
+
+En d'autres mots, des signaux électrique sinusïdaux dont la fréquence varie entre 0 et 150 Hz, sont ainsi envoyé entre deux phases. L'amplitude doit être ajustée de façon à éviter toute saturation. Ensuite, la tension et le courant sont mesurés à haute-fréquence afin de calculer la tension RMS, le courant RMS et la puissance moyenne.
+
+Ces 3 variables permettent d'obtenir les courbes de résistances et de réactances en fonction de la fréquence grâce au formules ci-dessous:
+
+$`|Z_{eq}| = \frac{V_{RMS}}{I_{RMS}}`$
+
+$` R_{eq} = \frac{P_{moy}}{I_{RMS}^2}`$
+
+$` X_{eq} = \sqrt{|Z_{eq}|^2-R_{eq}^2`$
 
 ### Équipement utilisé
 
@@ -39,12 +49,11 @@ Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opé
 
 ## Mesures
 
-Afin de mesurer 
+à venir
 
 ## Circuit
 
-
-
+## Analyse
 
 ## Résultats
 
