@@ -51,20 +51,17 @@ Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opé
 
 <img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
-
-
-
 ## Circuit
-Le circuit est disponible ici et est visualisable avec un logiciel comme KiCad.
+Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
 
+<img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
 
 ## Mesures
  À venir...
   (protocole, callibration etc.)
 ## Analyse
-
+à venir... (code python, incertitude)
 ## Résultats
-
 À venir...
 
 ## References
