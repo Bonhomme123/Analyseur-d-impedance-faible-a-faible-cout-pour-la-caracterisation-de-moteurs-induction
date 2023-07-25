@@ -58,7 +58,7 @@ Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-de
 
 ## Mesures
  À venir...
-  (protocole, callibration etc.)
+  (code esp32, protocole, callibration etc.)
 ## Analyse
 à venir... (code python, incertitude)
 ## Résultats
