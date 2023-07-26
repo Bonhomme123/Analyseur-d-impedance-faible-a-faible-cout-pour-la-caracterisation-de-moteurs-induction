@@ -1,12 +1,17 @@
 # Identification-des-parametres-du-moteur-induction-avec-ESP32
 Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction.  -  Low cost method for parameters identifications of induction motor's equivalent circuit.
+
 ## Objectif
 
-L'objectif de ce projet est de mesurer la réponse en fréquence d'un **moteur à induction à double cage d'écureuil**, au repos, afin d'en identifier les paramètres du circuits équivalent. Ce circuit est le suivant:
+L'objectif de ce projet est de modéliser le **moteur à induction à double cages d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles.
+
+Le modèle standard du moteur à induction à cages doubles est basé sur le circuit circuit équivalent suivant:
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
 [Source de l'image](https://www.researchgate.net/publication/355849345_Influence_of_Equivalent_Circuit_Resistances_on_Operating_Parameters_on_Three-Phase_Induction_Motors_with_Powers_up_to_50_kW/figures?lo=1)
+
+Le vrai défi réside donc dans l'identification des huits paramètres du circuit.
 
 
 #### Comment reconnaître un moteur à cage double?
@@ -51,21 +56,25 @@ Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opé
 
 <img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
+## Circuit
+Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
 
-
-
+<img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
 
 ## Mesures
-
-à venir
-
-## Circuit
-
+ À venir...
+  (code esp32, protocole, callibration etc.)
 ## Analyse
-
+### Hypothèse
+* résistance de puissance purement résistive
+* mesure simultannée?
+  
+à venir... (code python, incertitude)
 ## Résultats
-
 À venir...
+
+## Amélioration possible
+* Utiliser un vrai amplificateur de mesure (INA118, INA128, etc.)
 
 ## References
 <a id="1">[1]</a> 
