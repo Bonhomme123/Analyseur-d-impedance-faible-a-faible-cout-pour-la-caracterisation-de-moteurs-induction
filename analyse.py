@@ -61,7 +61,7 @@ class experiment():
         self.temps_entry.grid(row=0, column=1)
 
 
-        freq_label = tk.Label(acquisition_info_frame, text="Plage de fréquences (Hz)")
+        freq_label = tk.Label(acquisition_info_frame, text="Plage de fréquences d'excitation(Hz)")
         freq_label.grid(row=1, column=0)
         hLeft = tk.DoubleVar(value=10)
         hRight = tk.DoubleVar(value=150)
@@ -76,6 +76,12 @@ class experiment():
         self.Npts_spinbox = tk.Spinbox(acquisition_info_frame, from_=1, to="infinity", textvariable=Npts_var, width=5)
         self.Npts_spinbox.grid(row=2, column=1)
 
+        freq_acquisition_label = tk.Label(acquisition_info_frame, text="Fréquence d'échantillonage (Hz)")
+        freq_acquisition_label.grid(row=3, column=0)
+        self.freq_acquisition_entry = tk.Entry(acquisition_info_frame)
+        self.freq_acquisition_entry.insert(0, 6000)
+        self.freq_acquisition_entry.grid(row=3, column=1)
+        
         
         for widget in acquisition_info_frame.winfo_children(): #espace entre les trucs
             widget.grid_configure(padx=10, pady=10)
@@ -91,7 +97,7 @@ class experiment():
         fich_label = tk.Label(fich_frame, text="Nom du fichier:")
         fich_label.grid(row=0, column=0)
         self.fich_entry = tk.Entry(fich_frame, width=50, justify="center")
-        self.fich_entry.insert(0, datetime.now().strftime("exp_du_%m-%d-%Y_%Hh%M.txt"))
+        self.fich_entry.insert(0, datetime.now().strftime("Data/exp_du_%m-%d-%Y_%Hh%M.txt"))
         self.fich_entry.grid(row=0, column=1)
 
         button = tk.Button(export_info_frame, text="GO", command=self.setValues, width=40)
@@ -109,6 +115,7 @@ class experiment():
         self.freq_range = self.freq_rangeSlider.getValues()
         self.file_name = self.fich_entry.get()
         self.Npts = int(self.Npts_spinbox.get())
+        self.samplingRate = float(self.freq_acquisition_entry.get())
         self.window.destroy()
 
     def startExperiment(self):
@@ -119,21 +126,27 @@ class experiment():
         port=self.port,
         baudrate=self.baudrate,
         timeout=1)
-
-        while True:
-            print(self.ser.readline())
-
+        
         for freq in self.freqs:
-
+            with open(self.file_name, 'a') as file:
+                file.write(f'\n\nFrequence: {freq} Hz\n')
             self.generateSound(freq)
             t0 = time.time()
             t1 = t0
-            while t1 - t0 < self.time:
-                t1 = time.time()
-                print(self.ser.readline())
+
+            samplingNumber = int(self.samplingRate*self.time)
+
+            with open(self.file_name, 'ab') as file:
+                while t1 - t0 < self.time:#Man peut pas faire ca time based ca prend un compteur selon la freq
+                    t1 = time.time()
+                    
+                    
+                    if (self.ser.inWaiting() > 0):
+                        file.write(self.ser.read(self.ser.inWaiting()) )
+                        #file.write(f'{self.ser.inWaiting()}\n' )
             
-            print('*'*50)
-            time.sleep(1)
+            time.sleep(0.5)
+            print(".")
 
 
         self.ser.close()
