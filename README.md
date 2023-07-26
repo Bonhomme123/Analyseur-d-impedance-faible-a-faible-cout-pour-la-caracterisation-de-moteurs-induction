@@ -65,6 +65,10 @@ Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-de
  À venir...
   (code esp32, protocole, callibration etc.)
 ## Analyse
+### Hypothèse
+* résistance de puissance purement résistive
+* mesure simultannée?
+  
 à venir... (code python, incertitude)
 ## Résultats
 À venir...
