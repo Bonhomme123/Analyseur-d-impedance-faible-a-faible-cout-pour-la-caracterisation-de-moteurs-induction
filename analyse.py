@@ -100,7 +100,7 @@ class experiment():
         self.fich_entry.insert(0, datetime.now().strftime("Data/exp_du_%m-%d-%Y_%Hh%M.txt"))
         self.fich_entry.grid(row=0, column=1)
 
-        button = tk.Button(export_info_frame, text="GO", command=self.setValues, width=40)
+        button = tk.Button(export_info_frame, text="Démarrer l'échantillonage", command=self.setValues, width=40)
         button.grid(row=1, column=0)
 
         for widget in export_info_frame.winfo_children(): #espace entre les trucs
@@ -119,7 +119,6 @@ class experiment():
         self.window.destroy()
 
     def startExperiment(self):
-        print('Starting...')
         self.freqs = np.linspace(*self.freq_range, self.Npts)
         
         self.ser = serial.Serial(
@@ -127,26 +126,28 @@ class experiment():
         baudrate=self.baudrate,
         timeout=1)
         
-        for freq in self.freqs:
+        with open(self.file_name, 'a') as file:
+                file.write(f"Baudrate: {self.baudrate}\nPort: {self.port}\nDuree par point: {self.time}\nPalge de frequences: {self.freq_range}\nNombre de points: {self.Npts}\nSamplingRate: {self.samplingRate}\n")
+
+        for i, freq in enumerate(self.freqs):
+            print(f"Test {i+1} sur {self.Npts}. Fréquence: {freq:.1f} Hz                  \r", end="")
             with open(self.file_name, 'a') as file:
-                file.write(f'\n\nFrequence: {freq} Hz\n')
+                file.write(f'\n\nFrequence #{i+1}: {freq} Hz\n')
             self.generateSound(freq)
-            t0 = time.time()
-            t1 = t0
 
-            samplingNumber = int(self.samplingRate*self.time)
+            samplingBytesNumber = int(self.samplingRate*self.time*16)#14 = num de char par ligne
 
+            self.ser.flush() # CLEAR SERIAL BUFFER
             with open(self.file_name, 'ab') as file:
-                while t1 - t0 < self.time:#Man peut pas faire ca time based ca prend un compteur selon la freq
+                while samplingBytesNumber > 0:
                     t1 = time.time()
-                    
-                    
-                    if (self.ser.inWaiting() > 0):
+
+                    inWaiting = self.ser.inWaiting()
+                    if (inWaiting > 0):
                         file.write(self.ser.read(self.ser.inWaiting()) )
-                        #file.write(f'{self.ser.inWaiting()}\n' )
+                        samplingBytesNumber -= inWaiting
             
-            time.sleep(0.5)
-            print(".")
+            time.sleep(0.1)
 
 
         self.ser.close()
