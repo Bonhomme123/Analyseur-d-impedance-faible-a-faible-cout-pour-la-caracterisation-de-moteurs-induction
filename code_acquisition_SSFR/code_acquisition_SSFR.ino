@@ -64,15 +64,17 @@ void copy(volatile unsigned int* src, volatile unsigned int* dst, int len) {
 
 
 void sendData(){
-  int T1 = micros();
-  Serial.println("\nTension, Courant");
+  //int T1 = micros();
   for(int i = 0; i < arrayLenght; i++){
+    //Serial.sprintf("%i,%voltageBuffer[i],%currentArray[i]")
+    Serial.print(i);
+    Serial.print(",");
     Serial.print(voltageBuffer[i]);
-    Serial.print(", ");
+    Serial.print(",");
     Serial.println(currentArray[i]);
    }
   //Serial.print("\nTemps :");
-  Serial.println((micros() - T1) / arrayLenght);
+  //Serial.println((micros() - T1) / arrayLenght);
 }
 
 void printInfo(){
