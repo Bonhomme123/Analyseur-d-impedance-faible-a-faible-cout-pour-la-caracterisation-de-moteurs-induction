@@ -75,6 +75,7 @@ Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-de
 
 ## Amélioration possible
 * Utiliser un vrai amplificateur de mesure (INA118, INA128, etc.)
+* Contrôle du courant automatique (contrôle du volume audio...)
 
 ## References
 <a id="1">[1]</a> 
