@@ -73,6 +73,9 @@ Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-de
 ## Résultats
 À venir...
 
+## Amélioration possible
+* Utiliser un vrai amplificateur de mesure (INA118, INA128, etc.)
+
 ## References
 <a id="1">[1]</a> 
 Monjo, Lluis, Kojooyan-Jafari, Hengameh, Corcoles, Felipe and
