@@ -5,7 +5,7 @@ Méthode à faible coût pour identifier les paramètres du circuit d'un moteur 
 
 L'objectif de ce projet est de modéliser le **moteur à induction à double cages d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles.
 
-Le modèle standard du moteur à induction à cages doubles est basé sur le circuit circuit équivalent suivant:
+Le modèle standard du moteur à induction à cages doubles est basé sur le circuit équivalent suivant:
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
