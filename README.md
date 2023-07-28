@@ -17,9 +17,9 @@ Le vrai défi réside donc dans l'identification des huits paramètres du circui
 
 
 
-### Méthode utilisée
+## Méthode d'analyse utilisée
 
-La méthode employée est décrite dans cet article[[1]](#1). Il s'agit d'étudier la réponse en fréquence au bornes de deux phases du moteur, alors que le rotor est au repos. Un algorithme d'optimisation par la méthode des moindres carrés est ensuite utilisé pour l'identification des paramètres. 
+La méthode pour l'analyse des courbes d'impédance est décrite dans cet article[[1]](#1). Il s'agit d'étudier la réponse en fréquence au bornes de deux phases du moteur, alors que le rotor est au repos. Un algorithme d'optimisation par la méthode des moindres carrés est ensuite utilisé pour l'identification des paramètres. 
 
 En d'autres mots, des signaux électrique sinusïdaux dont la fréquence varie entre 0 et 150 Hz, sont ainsi envoyé entre deux phases. L'amplitude doit être ajustée de façon à éviter toute saturation. Ensuite, la tension et le courant sont mesurés à haute-fréquence afin de calculer la **tension RMS**, le **courant RMS** et la **puissance moyenne**.
 
@@ -39,7 +39,25 @@ $` X_{eq} = \sqrt{|Z_{eq}|^2-R_{eq}^2}`$
 
 En traçant les courbes de $` R_{eq}`$ et de $`X_{eq}`$ en fonction de la fréquence, on peut identifier les paramètres du circuit équivalent. 
 
-### Équipement utilisé
+## Équipement utilisé
+
+L'appareil normalement utilisé pour produire les courbes d'impédance est un [analyseur d'impédance](https://en.wikipedia.org/wiki/Impedance_analyzer#:~:text=An%20impedance%20analyzer%20is%20a,materials%20used%20to%20make%20components.). Un tel appareil permet de balayer la fréquence de son signal de 1 à plusieurs Mhz afin d'obtenir des mesures de l'ordre de 10 µΩ à 100 TΩ. En se fiant à l'article [[1]](#1), des résultats suffisamment précis peuvent être tiré d'une analyse sur une plage de fréquence de seulement 1 à 150 Hz. Il n'est donc peut-être pas nécessaire de dépenser plusieurs millier de $ (ou €) pour un analyseur d'impédance standard.
+
+Le dispositif qui sera mis au point devra donc remplir  ces 2 fonctions:
+
+### Produire un signal électrique sinusoïdale à fréquence variable
+
+D'abord, un signal électrique, en tension ou en courant, doit pouvoir être appliquée aux bornes de deux phases du moteur. Ce signal doit idéalement n'être que sinusoïdale avec un contenu fréquentiel ne contenant que la fréquence désirée. La puissance du signal doit aussi être suffisante pour que la tension et le courant soit précisément mesurables.
+
+Un générateur de fonction ainsi qu'un amplificateur approprié peuvent donc être employés pour remplir cette tâche. Cependant ces appareils sont aussi relativement dispendieux et une option à très faible coût méritait d'être tentée: l'amplificateur hi-fi.
+
+Un tel amplificateur, destiné au contrôle de haut-parleurs, devrait pouvoir générer un signal arbitraire dont la fréquence n'excède pas 20 kHz. De plus, ces appareils sont très peu couteux et peuvent fournir une puissance appréciable. On choisi donc l'amplificateur hi-fi ZK-1002M capable de générer 100W ce qui devrait être suffisant.
+
+<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/>
+
+Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur. Cette même résistance servira d'ailleurs à mesurer le courant grâce à une mesure de la tension qui la traverse.
+
+### Mesure simultannée à haute fréquence de la tension et du courant
 
 Traditionnelement, les mesures à effectuer nécessiterait un générateur de fonction, un amplificateur (pour amplifier le signal) et un oscilloscope (ou la combinaison wattmètre + ampèremètre + voltmètre assez précis). Il va sans dire que ces équipements sont dispendieux. 
 
@@ -47,7 +65,7 @@ Pour remplacer le générateur de fonction et l'amplificateur, l'amplificateur a
 
 Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opérationnels, sont utilisés pour prendre les mesures nécessaires.
 
-<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
+ <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
 ## Circuit
 Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
