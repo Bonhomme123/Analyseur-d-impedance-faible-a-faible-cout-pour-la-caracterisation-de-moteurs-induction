@@ -1,4 +1,4 @@
-# Identification-des-parametres-du-moteur-induction-avec-ESP32
+# Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction
 Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction. DIY analyseur d'impédance.  -  Low cost method for parameters identifications of induction motor's equivalent circuit. DIY impedance analyzer.
 
 Tous les codes utilisés sont libre d'utilisation.
