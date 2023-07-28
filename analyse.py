@@ -8,6 +8,7 @@ from tkinter import ttk
 from RangeSlider.RangeSlider import RangeSliderH, RangeSliderV
 from datetime import datetime
 import time
+import pygame
 
 
 
@@ -18,7 +19,7 @@ class experiment():
         self.GUI()
 
 
-        
+        self.callibrationSequence()
         self.startExperiment()
 
 
@@ -118,6 +119,18 @@ class experiment():
         self.samplingRate = float(self.freq_acquisition_entry.get())
         self.window.destroy()
 
+    def callibrationSequence(self):
+        print("Callibration...", end='')
+        
+        n = 10
+        # for i in range(n):
+        #     self.generateSound()
+
+        
+        time.sleep(0.5)
+        print('\r                            \r', end="") 
+        pass
+
     def startExperiment(self):
         self.freqs = np.linspace(*self.freq_range, self.Npts)
         
@@ -130,10 +143,12 @@ class experiment():
                 file.write(f"Baudrate: {self.baudrate}\nPort: {self.port}\nDuree par point: {self.time}\nPalge de frequences: {self.freq_range}\nNombre de points: {self.Npts}\nSamplingRate: {self.samplingRate}\n")
 
         for i, freq in enumerate(self.freqs):
-            print(f"Test {i+1} sur {self.Npts}. Fréquence: {freq:.1f} Hz                  \r", end="")
+            
             with open(self.file_name, 'a') as file:
                 file.write(f'\n\nFrequence #{i+1}: {freq} Hz\n')
-            self.generateSound(freq)
+            
+            self.generateSound(freq, self.time + 0.5)
+            print(f"Test {i+1} sur {self.Npts}. Fréquence: {freq:.1f} Hz                  \r", end="")
 
             samplingBytesNumber = int(self.samplingRate*self.time*16)#14 = num de char par ligne
 
@@ -146,17 +161,21 @@ class experiment():
                     if (inWaiting > 0):
                         file.write(self.ser.read(self.ser.inWaiting()) )
                         samplingBytesNumber -= inWaiting
-            
-            time.sleep(0.1)
-
-
+            self.sound.stop()
+            time.sleep(1)
         self.ser.close()
 
-    def generateSound(self, freq):
-        pass
+    def generateSound(self, freq, duration):
 
-                
-
+        sampleRate = 44100
+        pygame.mixer.init(sampleRate,-16,1,2**16)
+        arr = np.array([4096 * np.sin(2.0 * np.pi * freq * x / sampleRate) for x in range(0, int(sampleRate*self.time+1))]).astype(np.int16)
+        arr2 = np.c_[arr,arr]
+        #plt.plot(arr)
+        #plt.show()
+        self.sound = pygame.sndarray.make_sound(arr2)
+        self.sound.play(-1)
+        
 
 
 
