@@ -7,7 +7,7 @@ Tous les codes utilisés sont libre d'utilisation.
 
 L'objectif de ce projet est de concevoir un outil permettant de caractériser le modèle du **moteur à induction à double cage d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles. 
 
-Le modèle standard du moteur à induction à [double cage](#comment-reconnaître-un-moteur-à-double-cage?) est basé sur le circuit équivalent suivant:
+Le modèle standard du moteur à induction à [double cage](#comment-reconna%C3%AEtre-un-moteur-%C3%A0-double-cage) est basé sur le circuit équivalent suivant:
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
