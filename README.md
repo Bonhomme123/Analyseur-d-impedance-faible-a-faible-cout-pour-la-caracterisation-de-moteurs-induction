@@ -83,7 +83,7 @@ Le premier problème rencontré a été la réalisation que l'amplificateur hi-f
 
 <img src="./Images/signal désiré.jpg" alt="drawing" style="width:400px;"/> <img src="./Images/signal obtenu.jpg" alt="drawing" style="width:400px;"/>
 
-
+Cela constitue un problème, car comme le contenue fréquentiel contient désormais les fréquences de toutes les harmoniques de la fréquence voulue, on ne peut pas simplement trouver l'impédance du moteur en fonction de la fréquence en effectuant un simple balayage. 
 
 
 
