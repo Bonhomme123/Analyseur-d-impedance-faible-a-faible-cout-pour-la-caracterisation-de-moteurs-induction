@@ -57,7 +57,7 @@ Un tel amplificateur, destiné au contrôle de haut-parleurs, devrait pouvoir g�
 
 Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur. Cette même résistance servira d'ailleurs à mesurer le courant.
 
-### Mesure simultannée à haute fréquence de la tension et du courant
+### Mesurer simultannément de la tension et du courant à haute fréquence
 
 Traditionnelement, les mesures à effectuer nécessiterait un générateur de fonction, un amplificateur (pour amplifier le signal) et un oscilloscope (ou la combinaison wattmètre + ampèremètre + voltmètre assez précis). Il va sans dire que ces équipements sont dispendieux. 
 
