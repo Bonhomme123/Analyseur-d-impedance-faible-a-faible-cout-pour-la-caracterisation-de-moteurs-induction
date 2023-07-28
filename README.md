@@ -59,7 +59,7 @@ Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 
 
 ### Mesurer simultannément la tension et le courant à haute fréquence
 
-Afin de pouvoir déduire la résistance et la réactance du moteur en se fiant sur la [méthode d'analyse choisie](#méthode-d-analyse-utilisée)
+Afin de pouvoir déduire la résistance et la réactance du moteur en se fiant sur la [méthode d'analyse choisie](#m%C3%A9thode-danalyse-utilis%C3%A9e)
 
 Traditionnelement, les mesures à effectuer nécessiterait un générateur de fonction, un amplificateur (pour amplifier le signal) et un oscilloscope (ou la combinaison wattmètre + ampèremètre + voltmètre assez précis). Il va sans dire que ces équipements sont dispendieux. 
 
