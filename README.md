@@ -16,15 +16,6 @@ Le modèle standard du moteur à induction à [double cage](#comment-reconna%C3%
 Le vrai défi réside donc dans l'identification des huits paramètres du circuit. Pormalemour y parvenir, on peut étudier l'impédance du moteur en fonction de la fréquence d'excitation. Ces données sont obtenable grâce à un [analiseur d'impédance](https://en.wikipedia.org/wiki/Impedance_analyzer#:~:text=An%20impedance%20analyzer%20is%20a,materials%20used%20to%20make%20components.). Cependant comme cet appareil est extrêmement dispendieux, une option à faible coût, avec la plage d'impédance restrainte à celle typique d'un moteur à induction, serait très utile.
 
 
-#### Comment reconnaître un moteur à double cage?
-
-Dans les documents de références du moteur, on remarque que la courbe de couple est similaire à celle-ci:
-
-![plot](./Images/Torque-speed-curves-II-EQUVIVALENT-CIRCUIT-DIAGRAM-AND-ITS-SOLUTION_W640.jpg) 
-
-[Source de l'image](https://www.researchgate.net/publication/318692438_Influence_of_rotor_slot_shape_on_the_parameters_of_induction_motor/figures?lo=1)
-
-Le comportement du moteur n'est donc pas explicable avec le modèle à une seule cage.
 
 ### Méthode utilisée
 
@@ -89,6 +80,18 @@ Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-de
 ## Amélioration possible
 * Utiliser un vrai amplificateur de mesure (INA118, INA128, etc.)
 * Contrôle du courant automatique (contrôle du volume audio...)
+
+
+#### Comment reconnaître un moteur à double cage?
+
+Dans les documents de références du moteur, on remarque que la courbe de couple est similaire à celle-ci:
+
+![plot](./Images/Torque-speed-curves-II-EQUVIVALENT-CIRCUIT-DIAGRAM-AND-ITS-SOLUTION_W640.jpg) 
+
+[Source de l'image](https://www.researchgate.net/publication/318692438_Influence_of_rotor_slot_shape_on_the_parameters_of_induction_motor/figures?lo=1)
+
+Le comportement du moteur n'est donc pas explicable avec le modèle à une seule cage.
+
 
 ## References
 <a id="1">[1]</a> 
