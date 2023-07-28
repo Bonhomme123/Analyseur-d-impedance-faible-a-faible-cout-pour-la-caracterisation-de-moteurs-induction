@@ -81,7 +81,7 @@ Les schémas sont disponible [ici](https://github.com/Bonhomme123/Identification
 ### Nécessité d'un filtre passe-bas
 Le premier problème rencontré a été la réalisation que l'amplificateur hi-fi ne produit pas un signal lisse, mais plutôt un signal pulsé et contrôler par modulation d'amplitude. 
 
-<img src="./Images/signal désiré.jpg" alt="drawing" style="width:300px;"/> <img src="./Images/signal obtenu.jpg" alt="drawing" style="width:300px;"/>
+<img src="./Images/signal désiré.jpg" alt="drawing" style="width:400px;"/> <img src="./Images/signal obtenu.jpg" alt="drawing" style="width:400px;"/>
 
 
 
