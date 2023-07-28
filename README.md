@@ -1,5 +1,5 @@
 # Analyseur d'impédance faible à faible coût pour la caracterisation de moteurs induction
-Développement d'un analyseur d'impédance à faible coût dans le but de caractériser un modèle de moteur à induction.  -  **Low cost developpement of an impedance analyzer for induction motor caracterisation. ENGLISH README comming soon.**
+Développement d'un analyseur d'impédance à faible coût dans le but de caractériser un modèle de moteur à induction.  -  **Low cost developpement of an impedance analyzer for induction motor caracterisation.** ***ENGLISH README comming soon.***
 
 Tous les codes utilisés sont libre d'utilisation.
 
@@ -68,21 +68,23 @@ On peut donc imaginer une solution basée sur le microcontrôleur ESP32. Bien qu
 <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
 Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des fréquences la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures.
-  
 
 ## Circuit
-Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
+
+Deux schémas de circuit sont partagés: le premier étant le circuit tel que l'on aurait souhaité le faire, et le second étant le circuit qui a été réellement réalisé pour pallier aux contraintes temporelles et matériels du projet. Les deux différences notables sont le remplacement de la puce d'amplificateur de mesures par un circuit d'amplificateur opérationnel équivalent, ainsi que le remplacemnt d'un condensateur bipolaire par un circuit "équivalent" composé de 4 condensateur polarisé.
+
+Les schémas sont disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
 
 <img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
 
+## Problèmes rencontrés
 ### Nécessité d'un filtre passe-bas
-à venir
+Le premier problème rencontré a été la réalisation que l'amplificateur hi-fi ne produit pas un signal lisse, mais plutôt un signal pulsé et contrôler par modulation d'amplitude. 
 
-### Ampli. de mesures
 
-à venir
 
-### Réference de tension 
+
+
 
 
 
