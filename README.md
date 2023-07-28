@@ -5,9 +5,9 @@ Tous les codes utilisés sont libre d'utilisation.
 
 ## Objectif
 
-L'objectif de ce projet est de concevoir un outil permettant de caractériser le modèle du **moteur à induction à double cages d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles. 
+L'objectif de ce projet est de concevoir un outil permettant de caractériser le modèle du **moteur à induction à double cage d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles. 
 
-Le modèle standard du moteur à induction à cages doubles est basé sur le circuit équivalent suivant:
+Le modèle standard du moteur à induction à [double cage](#comment-reconnaître-un-moteur-à-double-cage?) est basé sur le circuit équivalent suivant:
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
@@ -16,7 +16,7 @@ Le modèle standard du moteur à induction à cages doubles est basé sur le cir
 Le vrai défi réside donc dans l'identification des huits paramètres du circuit. Pormalemour y parvenir, on peut étudier l'impédance du moteur en fonction de la fréquence d'excitation. Ces données sont obtenable grâce à un [analiseur d'impédance](https://en.wikipedia.org/wiki/Impedance_analyzer#:~:text=An%20impedance%20analyzer%20is%20a,materials%20used%20to%20make%20components.). Cependant comme cet appareil est extrêmement dispendieux, une option à faible coût, avec la plage d'impédance restrainte à celle typique d'un moteur à induction, serait très utile.
 
 
-#### Comment reconnaître un moteur à cage double?
+#### Comment reconnaître un moteur à double cage?
 
 Dans les documents de références du moteur, on remarque que la courbe de couple est similaire à celle-ci:
 
