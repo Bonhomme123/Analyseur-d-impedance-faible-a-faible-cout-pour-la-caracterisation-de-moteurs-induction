@@ -55,19 +55,20 @@ Un tel amplificateur, destiné au contrôle de haut-parleurs, devrait pouvoir g�
 
 <img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/>  <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/>
 
-Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur. Cette même résistance servira d'ailleurs à mesurer le courant.
+Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur dont l'impédance. Cette même résistance servira d'ailleurs à mesurer le courant.
 
 ### Mesurer simultannément la tension et le courant à haute fréquence
 
-Afin de pouvoir déduire la résistance et la réactance du moteur en se fiant sur la [méthode d'analyse choisie](#m%C3%A9thode-danalyse-utilis%C3%A9e)
+Afin de pouvoir déduire la résistance et la réactance du moteur en se fiant sur la [méthode d'analyse choisie](#m%C3%A9thode-danalyse-utilis%C3%A9e), la tension aux bornes des phase du moteur et le courant qui les traverse devront être mesuré à une fréquence suppérieur à celle d'excitation afin que les moyenne et RMS soient représentativent du signal. Il est aussi primordial que les mesures de courant et de tension soit fait suffisamment simultannément pour ne pas biaiser les résultats en introduisant une phase supplémentaire entre les deux signaux.
 
-Traditionnelement, les mesures à effectuer nécessiterait un générateur de fonction, un amplificateur (pour amplifier le signal) et un oscilloscope (ou la combinaison wattmètre + ampèremètre + voltmètre assez précis). Il va sans dire que ces équipements sont dispendieux. 
+Évidemment, un oscilloscope doté de deux canaux et d'une fonction d'exportation de données pourrait être utilisé pour les mesures. Le courant peut d'ailleurs être mesurer par une mesure de tension aux borne de la résistance de puissance, ce qui limite la nécéssité d'une sonde de courant. Encore une fois, il serait possible de réduire les coûts en remplaçant l'oscilloscope par un dispositif moins complexe. Cela peut même permettre d'en faire un outils facile d'utilisation, qui échantillone, sauvegarde et analyse automatiquement les données.
 
-Pour remplacer le générateur de fonction et l'amplificateur, l'amplificateur audio HiFi ZK-1002M (100W), normalement destiné au contrôle d'haut-parleurs. Une résistance de puissance de 5 Ohm (100W) est mis en série avec les phases du moteur afin de simuler l'impédance d'un haut-parleur.
+On peut donc imaginer une solution basée sur le microcontrôleur ESP32. Bien que la principale justification pour ce choix était sa disponibilité à portée de main, cela reste une excellente option grâce à son faible coût, à sa capacité à mesurer des signaux analogique à haute fréquence, et à communiquer en temps réel avec le port de série d'un ordinateur.
 
-Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opérationnels, sont utilisés pour prendre les mesures nécessaires.
+<img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
-  <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
+Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des fréquences la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures.
+  
 
 ## Circuit
 Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
