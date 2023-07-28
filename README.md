@@ -78,13 +78,16 @@ Les schémas sont disponible [ici](https://github.com/Bonhomme123/Identification
 <img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
 
 ## Problèmes rencontrés
-### Nécessité d'un filtre passe-bas
+### Harmoniques du signal
 Le premier problème rencontré a été la réalisation que l'amplificateur hi-fi ne produit pas un signal lisse, mais plutôt un signal pulsé et contrôler par modulation d'amplitude. 
 
 <img src="./Images/signal désiré.jpg" alt="drawing" style="width:400px;"/> <img src="./Images/signal obtenu.jpg" alt="drawing" style="width:400px;"/>
 
 Cela constitue un problème, car comme le contenue fréquentiel contient désormais les fréquences de toutes les harmoniques de la fréquence voulue, on ne peut pas simplement trouver l'impédance du moteur en fonction de la fréquence en effectuant un simple balayage. 
 
+Les pulsations sont généré à la fréquence fixe d'environ 330 kHz. 
+
+Solutions à venir...
 
 
 
