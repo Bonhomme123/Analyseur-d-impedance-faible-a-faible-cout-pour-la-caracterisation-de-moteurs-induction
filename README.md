@@ -1,11 +1,11 @@
 # Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction
-Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction. DIY analyseur d'impédance.  -  Low cost method for parameters identifications of induction motor's equivalent circuit. DIY impedance analyzer.
+Développement d'un analyseur d'impédance à faible coût dans le but de caractériser un modèle de moteur à induction.  -  Low cost developpement of an impedance analyzer for induction motor caracterisation.
 
 Tous les codes utilisés sont libre d'utilisation.
 
 ## Objectif
 
-L'objectif de ce projet est de modéliser le **moteur à induction à double cages d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles.
+L'objectif de ce projet est de concevoir un outil permettant de caractériser le modèle du **moteur à induction à double cages d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles. 
 
 Le modèle standard du moteur à induction à cages doubles est basé sur le circuit équivalent suivant:
 
@@ -13,7 +13,7 @@ Le modèle standard du moteur à induction à cages doubles est basé sur le cir
 
 [Source de l'image](https://www.researchgate.net/publication/355849345_Influence_of_Equivalent_Circuit_Resistances_on_Operating_Parameters_on_Three-Phase_Induction_Motors_with_Powers_up_to_50_kW/figures?lo=1)
 
-Le vrai défi réside donc dans l'identification des huits paramètres du circuit. 
+Le vrai défi réside donc dans l'identification des huits paramètres du circuit. Pormalemour y parvenir, on peut étudier l'impédance du moteur en fonction de la fréquence d'excitation. Ces données sont obtenable grâce à un [analiseur d'impédance](https://en.wikipedia.org/wiki/Impedance_analyzer#:~:text=An%20impedance%20analyzer%20is%20a,materials%20used%20to%20make%20components.). Cependant comme cet appareil est extrêmement dispendieux, une option à faible coût, avec la plage d'impédance restrainte à celle typique d'un moteur à induction, serait très utile.
 
 
 #### Comment reconnaître un moteur à cage double?
