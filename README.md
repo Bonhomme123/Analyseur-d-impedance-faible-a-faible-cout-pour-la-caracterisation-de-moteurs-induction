@@ -61,6 +61,17 @@ Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-de
 
 <img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
 
+### Nécessité d'un filtre passe-bas
+à venir
+
+### Ampli. de mesures
+
+à venir
+
+### Réference de tension 
+
+
+
 ## Mesures
  À venir...
   (code esp32, protocole, callibration etc.)
