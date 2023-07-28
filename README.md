@@ -53,9 +53,9 @@ Un générateur de fonction ainsi qu'un amplificateur approprié peuvent donc ê
 
 Un tel amplificateur, destiné au contrôle de haut-parleurs, devrait pouvoir générer un signal arbitraire dont la fréquence n'excède pas 20 kHz. De plus, ces appareils sont très peu couteux et peuvent fournir une puissance appréciable. On choisi donc l'amplificateur hi-fi ZK-1002M capable de générer 100W ce qui devrait être suffisant.
 
-<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/>
+<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/>  <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/>
 
-Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur. Cette même résistance servira d'ailleurs à mesurer le courant grâce à une mesure de la tension qui la traverse.
+Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur. Cette même résistance servira d'ailleurs à mesurer le courant.
 
 ### Mesure simultannée à haute fréquence de la tension et du courant
 
@@ -65,7 +65,7 @@ Pour remplacer le générateur de fonction et l'amplificateur, l'amplificateur a
 
 Ensuite, un micro-contrôlleur ESP-32, ainsi qu'un circuit d'amplificateurs opérationnels, sont utilisés pour prendre les mesures nécessaires.
 
- <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/> <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
+  <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
 ## Circuit
 Le circuit est disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
