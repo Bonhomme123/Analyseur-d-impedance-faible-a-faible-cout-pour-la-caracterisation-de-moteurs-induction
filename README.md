@@ -67,7 +67,7 @@ On peut donc imaginer une solution basée sur le microcontrôleur ESP32. Bien qu
 
 <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
-Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des fréquences la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures.
+Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des fréquences la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures. De plus, le temps de prise de mesure permet une fréquence d'acquisition, pour les deux canaux, d'environ 9000 Hz, ce qui est largement suffisant.
 
 ## Circuit
 
@@ -105,7 +105,7 @@ Cela constitue un problème, car comme le contenue fréquentiel contient désorm
 * Contrôle du courant automatique (contrôle du volume audio...)
 
 
-#### Comment reconnaître un moteur à double cage?
+## Comment reconnaître un moteur à double cage?
 
 Dans les documents de références du moteur, on remarque que la courbe de couple est similaire à celle-ci:
 
