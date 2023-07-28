@@ -1,5 +1,7 @@
 # Identification-des-parametres-du-moteur-induction-avec-ESP32
-Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction.  -  Low cost method for parameters identifications of induction motor's equivalent circuit.
+Méthode à faible coût pour identifier les paramètres du circuit d'un moteur à induction. DIY analyseur d'impédance.  -  Low cost method for parameters identifications of induction motor's equivalent circuit. DIY impedance analyzer.
+
+Tous les codes utilisés sont libre d'utilisation.
 
 ## Objectif
 
@@ -11,7 +13,7 @@ Le modèle standard du moteur à induction à cages doubles est basé sur le cir
 
 [Source de l'image](https://www.researchgate.net/publication/355849345_Influence_of_Equivalent_Circuit_Resistances_on_Operating_Parameters_on_Three-Phase_Induction_Motors_with_Powers_up_to_50_kW/figures?lo=1)
 
-Le vrai défi réside donc dans l'identification des huits paramètres du circuit.
+Le vrai défi réside donc dans l'identification des huits paramètres du circuit. 
 
 
 #### Comment reconnaître un moteur à cage double?
