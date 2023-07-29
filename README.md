@@ -79,7 +79,7 @@ Afin que l'outil soit conviviale à utiliser, une [interface graphique](https://
 
 <img src="./Images/GUI.png" alt="drawing" style="width:600px;"/>
 
-De plus, si le signal émis est d'origine audio (par l'entremise de l'amplificateur hi-fi), ce "logiciel" permettrait même de changer automatiquement le signal d'excitation, sans intervention humaine. Il serait même imaginable que l'amplitude du signal soit gérée automatiquement afin de maximiser sa puissance tout en évitant qu'il soit saturé.
+De plus, si le signal émis est d'origine audio (par l'entremise de l'amplificateur hi-fi), ce "logiciel" permettrait même de changer automatiquement le signal d'excitation, sans intervention humaine. Il serait même imaginable que l'amplitude du signal soit gérée automatiquement afin de maximiser sa puissance tout en évitant qu'il soit saturé. Dans le cas contraire, des instructions en temps réel pourrait être afficher pour permettre à l'utilisateur de mener à bien l'expérience sans avoir à vérifier lui-même les données.
 
 Évidemment, il est aussi concevable que l'analyse des données soit elle aussi automatisée. Dans ce cas, les huits paramètres du moteurs à induction, et même ses courbes caractéristique (couple, puissance, efficacité, etc.), pourraient être afficher directement sur l'interface graphique, complétant ainsi un outil d'analyse puissant et simple d'utilisation.
 
