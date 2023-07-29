@@ -69,13 +69,25 @@ On peut donc imaginer une solution basée sur le microcontrôleur ESP32. Bien qu
 
 Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des fréquences la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures. De plus, le temps de prise de mesure permet une fréquence d'acquisition, pour les deux canaux, d'environ 9000 Hz, ce qui est largement suffisant.
 
-## Circuit
+## Code pour l'échantillonage
+### Code de l'ESP32
+Afin d'utiliser au maximum les capacités du micro-contrôleur, la seconde méthode de ce [site](https://www.instructables.com/The-Best-Way-for-Sampling-Audio-With-ESP32/) est implémenté. L'acquisition est donc gérer par interruption temporelle alors que la boucle principale envoie les données en pacquet au port de série. Un *buffer* est utilisée pour éviter que l'acquisition puisse avoir lieu en continue. Le code de l'ESP32 est disponible [ici](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/tree/main/code_acquisition_SSFR). 
+
+Les premiers tests montre qu'une fréquence d'échantillonage de plus de 6000Hz est possible, ce qui représente 40 échantillons par cycle à 150 Hz.
+### Interface graphique
+Afin que l'outil soit conviviale à utiliser, une [interface graphique](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/analyse.py) est dévelopée en utilisant le module *Tkinter* sur *Python*. Cette interface graphique permet donc d'enregistrer les paramètres et les données recceuillis par le port de série. 
+
+(IMAGE À VENIR...)
+
+De plus, si le signal émis est d'origine audio (par l'entremise de l'amplificateur hi-fi), ce "logiciel" permettrait même de changer automatiquement le signal d'excitation, sans intervention humaine. Il serait même imaginable que l'amplitude du signal soit gérée automatiquement afin de maximiser sa puissance tout en évitant qu'il soit saturé.
+## Circuit de mesures
 
 Deux schémas de circuit sont partagés: le premier étant le circuit tel que l'on aurait souhaité le faire, et le second étant le circuit qui a été réellement réalisé pour pallier aux contraintes temporelles et matériels du projet. Les deux différences notables sont le remplacement de la puce d'amplificateur de mesures par un circuit d'amplificateur opérationnel équivalent, ainsi que le remplacemnt d'un condensateur bipolaire par un circuit "équivalent" composé de 4 condensateur polarisé.
 
 Les schémas sont disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
 
 <img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
+
 
 ## Problèmes rencontrés
 ### Harmoniques du signal
