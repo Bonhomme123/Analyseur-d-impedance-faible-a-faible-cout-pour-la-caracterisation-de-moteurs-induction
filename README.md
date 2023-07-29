@@ -77,7 +77,7 @@ Les premiers tests montre qu'une fréquence d'échantillonage de plus de 6000Hz 
 ### Interface graphique et analyse
 Afin que l'outil soit conviviale à utiliser, une [interface graphique](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/analyse.py) est dévelopée en utilisant le module *Tkinter* sur *Python*. Cette interface graphique permet donc d'enregistrer les paramètres et les données recceuillis par le port de série. 
 
-(IMAGE À VENIR...)
+<img src="./Images/GUI.png" alt="drawing" style="width:600px;"/>
 
 De plus, si le signal émis est d'origine audio (par l'entremise de l'amplificateur hi-fi), ce "logiciel" permettrait même de changer automatiquement le signal d'excitation, sans intervention humaine. Il serait même imaginable que l'amplitude du signal soit gérée automatiquement afin de maximiser sa puissance tout en évitant qu'il soit saturé.
 
