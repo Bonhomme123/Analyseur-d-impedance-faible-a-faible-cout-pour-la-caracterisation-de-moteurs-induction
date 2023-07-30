@@ -102,26 +102,26 @@ Cela constitue un problème, car comme le contenue fréquentiel contient désorm
 
 Les pulsations sont généré à la fréquence fixe d'environ 330 kHz. 
 
-Solutions à venir...
+#### Solution #1: filtre passe-bas analogique
+À venir...
 
-
+#### Solution #2: Utiliser un vrai générateur de fonction DDS
+À venir...
 
 ## Mesures
  À venir... (protocole, callibration etc.)
 ## Analyse
-À venir...
-### Hypothèse
-* résistance de puissance purement résistive
-* mesure simultannée?
-  
-à venir... (code python, incertitude)
+À venir... (Méthode d'identification, Calcul d'incertitude, etc.)
+### Hypothèses considérées
+* La résistance de puissance est purement résistive.
+* Les mesures de courant et de tension sont suffisament simultannée. (Possibilité d'interpoler avec la mesure adjacente pour tenir compte du décalage...)
+
 ## Résultats
-À venir...
+À venir... (Comparaison avec les courbes de performance du fabricant)
 
 ## Amélioration possible
 * Utiliser un vrai amplificateur de mesure (INA118, INA128, etc.)
 * Contrôle du courant automatique (contrôle du volume audio...)
-
 
 ## Comment reconnaître un moteur à double cage?
 
