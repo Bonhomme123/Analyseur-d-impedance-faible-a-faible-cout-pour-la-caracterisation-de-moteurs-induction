@@ -15,12 +15,11 @@ import pygame
 class experiment():
 
     def __init__(self):
-        
         self.GUI()
-
-
         self.callibrationSequence()
-        self.startExperiment()
+        self.experiment_loop()
+        self.analyse()
+        self.displayResult()
 
 
     def GUI(self):
@@ -101,7 +100,7 @@ class experiment():
         self.fich_entry.insert(0, datetime.now().strftime("Data/exp_du_%m-%d-%Y_%Hh%M.txt"))
         self.fich_entry.grid(row=0, column=1)
 
-        button = tk.Button(export_info_frame, text="Démarrer l'échantillonage", command=self.setValues, width=40)
+        button = tk.Button(export_info_frame, text="Démarrer l'échantillonage", command=self.setValues, width=40,)
         button.grid(row=1, column=0)
 
         for widget in export_info_frame.winfo_children(): #espace entre les trucs
@@ -131,7 +130,7 @@ class experiment():
         print('\r                            \r', end="") 
         pass
 
-    def startExperiment(self):
+    def experiment_loop(self):
         self.freqs = np.linspace(*self.freq_range, self.Npts)
         
         self.ser = serial.Serial(
@@ -143,11 +142,13 @@ class experiment():
                 file.write(f"Baudrate: {self.baudrate}\nPort: {self.port}\nDuree par point: {self.time}\nPalge de frequences: {self.freq_range}\nNombre de points: {self.Npts}\nSamplingRate: {self.samplingRate}\n")
 
         for i, freq in enumerate(self.freqs):
+            freq = int(freq)
             
             with open(self.file_name, 'a') as file:
                 file.write(f'\n\nFrequence #{i+1}: {freq} Hz\n')
             
-            self.generateSound(freq, self.time + 0.5)
+            self.sourceInstruction(freq)
+            #self.generateSound(freq, self.time + 0.5)
             print(f"Test {i+1} sur {self.Npts}. Fréquence: {freq:.1f} Hz                  \r", end="")
 
             samplingBytesNumber = int(self.samplingRate*self.time*16)#14 = num de char par ligne
@@ -161,11 +162,14 @@ class experiment():
                     if (inWaiting > 0):
                         file.write(self.ser.read(self.ser.inWaiting()) )
                         samplingBytesNumber -= inWaiting
-            self.sound.stop()
+            self.check_saturation()
+            #self.sound.stop()
             time.sleep(1)
         self.ser.close()
 
     def generateSound(self, freq, duration):
+        
+        """Pour un générateur de fonction basé sur un système audio."""
 
         sampleRate = 44100
         pygame.mixer.init(sampleRate,-16,1,2**16)
@@ -175,10 +179,39 @@ class experiment():
         #plt.show()
         self.sound = pygame.sndarray.make_sound(arr2)
         self.sound.play(-1)
+
+    def sourceInstruction(self, freq):
+
+        """ Pour un générateur de fonction nécessitant une intervention humaine. """
+
+
+        self.instructionWindow = tk.Tk()
+        self.instructionWindow.title("Instructions")
         
+        frame = tk.Frame(self.instructionWindow)
+        frame.pack()
+
+        instruction_label = tk.Label(frame, text=f"Veuillez régler le générateur de fonction à {freq} Hz.", font=("TkDefaultFont", 18))
+        instruction_label.grid(row=0, column=0)
+        button = tk.Button(frame, text="Poursuivre l'échantillonage", command=self.instructionWindow.destroy, width=40, height=5, bg='white')
+        button.grid(row=1, column=0)
 
 
+        for widget in frame.winfo_children(): #espace entre les trucs
+            widget.grid_configure(padx=20, pady=30)
+        
+        self.instructionWindow.mainloop()
 
+    def check_saturation(self):
+        pass
+
+    def analyse(self):
+        """ Analyse les données et trouve: courbes d'impédance, paramètres du modèle, courbes de couple/puissance/efficacité"""
+        pass
+
+    def displayResult(self):
+        """ affiche les résultats de l'expérience en cours ou d'une expérience passée"""
+        pass
 
 
 experiment()
