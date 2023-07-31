@@ -49,16 +49,17 @@ Le dispositif qui sera mis au point devra donc remplir  ces 2 fonctions:
 
 D'abord, un signal électrique, en tension ou en courant, doit pouvoir être appliquée aux bornes de deux phases du moteur. Ce signal doit idéalement n'être que sinusoïdale avec un contenu fréquentiel ne contenant que la fréquence désirée. La puissance du signal doit aussi être suffisante pour que la tension et le courant soit précisément mesurables.
 
-Un générateur de fonction ainsi qu'un amplificateur approprié peuvent donc être employés pour remplir cette tâche. Cependant ces appareils sont aussi relativement dispendieux et une option à très faible coût méritait d'être tentée: l'amplificateur hi-fi.
+Un générateur de fonction ainsi qu'un amplificateur approprié peuvent donc être employés pour remplir cette tâche. Cependant ces appareils sont aussi relativement dispendieux et une option à très faible coût méritait d'être tentée: l'amplificateur hi-fi. Un tel amplificateur, destiné au contrôle de haut-parleurs, devrait pouvoir générer un signal arbitraire dont la fréquence n'excède pas 20 kHz. De plus, ces appareils sont très peu couteux et peuvent fournir une puissance appréciable. On choisi donc l'amplificateur hi-fi ZK-1002M capable de générer 100W ce qui devrait être suffisant. Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur dont l'impédance. Cette même résistance servira d'ailleurs à mesurer le courant.
 
-Un tel amplificateur, destiné au contrôle de haut-parleurs, devrait pouvoir générer un signal arbitraire dont la fréquence n'excède pas 20 kHz. De plus, ces appareils sont très peu couteux et peuvent fournir une puissance appréciable. On choisi donc l'amplificateur hi-fi ZK-1002M capable de générer 100W ce qui devrait être suffisant.
+<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:100px;"/>  <img src="./Images/R5-100W.jpg" alt="drawing" style="width:100px;"/>
 
-<img src="./Images/zk-1002m.jpg" alt="drawing" style="width:200px;"/>  <img src="./Images/R5-100W.jpg" alt="drawing" style="width:200px;"/>
+L'idée est cependant abandonnée pour des raisons mentionnées plus bas. L'alternative se présentant au projet est donc d'utilisé un vrai générateur de fonction, qui produira un meilleur signal, mais ayant le défaut d'être de faible puissance et de ne pas être contrôllable automatiquement facilement, comme le serait un signal audio. Le modèle choisi est le FG-100, qui n'est pas beaucoup plus dispendieux que le ZK-1002M.
 
-Comme il est conçu pour contrôler un haut-parleur dont l'impédance de 4 à 8 Ohm, une résistance de puissance (100W pour être certain...) sera mise en série avec les phase du moteur dont l'impédance. Cette même résistance servira d'ailleurs à mesurer le courant.
+<img src="./Images/fg-100.jpg" alt="drawing" style="width:300px;"/>
+
+Cet appareil a une résistance interne de 50 \$\Omega\$ et un signal capable de +/- 10V crête-à-crête. Il est donc capable de fournir 2W maximum.
 
 ### Mesurer simultannément la tension et le courant à haute fréquence
-
 Afin de pouvoir déduire la résistance et la réactance du moteur en se fiant sur la [méthode d'analyse choisie](#m%C3%A9thode-danalyse-utilis%C3%A9e), la tension aux bornes des phase du moteur et le courant qui les traverse devront être mesuré à une fréquence suppérieur à celle d'excitation afin que les moyenne et RMS soient représentativent du signal. Il est aussi primordial que les mesures de courant et de tension soit fait suffisamment simultannément pour ne pas biaiser les résultats en introduisant une phase supplémentaire entre les deux signaux.
 
 Évidemment, un oscilloscope doté de deux canaux et d'une fonction d'exportation de données pourrait être utilisé pour les mesures. Le courant peut d'ailleurs être mesurer par une mesure de tension aux borne de la résistance de puissance, ce qui limite la nécéssité d'une sonde de courant. Encore une fois, il serait possible de réduire les coûts en remplaçant l'oscilloscope par un dispositif moins complexe. Cela peut même permettre d'en faire un outils facile d'utilisation, qui échantillone, sauvegarde et analyse automatiquement les données.
@@ -67,7 +68,7 @@ On peut donc imaginer une solution basée sur le microcontrôleur ESP32. Bien qu
 
 <img src="./Images/esp32.jpg" alt="drawing" style="width:200px;"/>
 
-Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des fréquences la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures. De plus, le temps de prise de mesure permet une fréquence d'acquisition, pour les deux canaux, d'environ 9000 Hz, ce qui est largement suffisant.
+Un circuit électronique d'acquisition devra cependant être mis au point car l'ESP32, ne peut que mesurer des tensions de la plage de 0 à 3.3V. Les signaux devront donc être centré environ à 1.7 V et leur amplitude devra être ajusté (avec un gain connu) pour maximiser la résolution des mesures. De plus, le temps de prise de mesure permet une fréquence d'acquisition, pour les deux canaux, d'environ 9000 Hz, ce qui est largement suffisant.
 
 ## Code pour l'échantillonage
 ### Code de l'ESP32
@@ -85,11 +86,7 @@ De plus, si le signal émis est d'origine audio (par l'entremise de l'amplificat
 
 ## Circuit de mesures
 
-Deux schémas de circuit sont partagés: le premier étant le circuit tel que l'on aurait souhaité le faire, et le second étant le circuit qui a été réellement réalisé pour pallier aux contraintes temporelles et matériels du projet. Les deux différences notables sont le remplacement de la puce d'amplificateur de mesures par un circuit d'amplificateur opérationnel équivalent, ainsi que le remplacemnt d'un condensateur bipolaire par un circuit "équivalent" composé de 4 condensateur polarisé.
-
-Les schémas sont disponible [ici](https://github.com/Bonhomme123/Identification-des-parametres-du-moteur-induction-avec-ESP32/tree/main/SSFR%20Induction%20motor%20circuit) et est visualisable avec KiCad.
-
-<img src="./Images/SSFR Induction motor — Editeur de Schématique 2023-07-25 17_00_29 (2).png" alt="drawing" style="width:800px;"/>
+Le schéma électrique **(non-testé)** est disponible [ici](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/Schema%20du%20circuit/Sch%C3%A9ma%20du%20circuit.kicad_sch) et est visualisable avec KiCad.
 
 
 ## Problèmes rencontrés
@@ -103,10 +100,9 @@ Cela constitue un problème, car comme le contenue fréquentiel contient désorm
 Les pulsations sont généré à la fréquence fixe d'environ 330 kHz. 
 
 #### Solution #1: filtre passe-bas analogique
-À venir...
-
+Une solution utilisant un filtre RC passe-bas analogique est testé, mais les résultats ne sont pas suffisament satisfaisant pour continuer à explorer cette option.
 #### Solution #2: Utiliser un vrai générateur de fonction DDS
-À venir...
+Entre en scène le générateur de fonction FG-100. Cette solution devra être testée.
 
 ## Mesures
  À venir... (protocole, callibration etc.)
