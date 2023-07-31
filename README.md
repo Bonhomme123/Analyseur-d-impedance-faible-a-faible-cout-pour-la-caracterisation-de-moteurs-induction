@@ -7,7 +7,7 @@ Tous les codes utilisés sont libre d'utilisation.
 
 L'objectif de ce projet est de concevoir un outil permettant de caractériser le modèle du **moteur à induction à double cage d'écureuil** de la moto électrique ***Ambre 125*** de [Ambre](https://ambre.bike/) afin d'en prédire précisément les performances et d'en identifier les améliorations possibles. 
 
-Le modèle standard du moteur à induction à [double cage](#comment-reconna%C3%AEtre-un-moteur-%C3%A0-double-cage) est basé sur le circuit équivalent suivant:
+Le modèle standard du moteur à induction à [double cage](#comment-reconna%C3%AEtre-un-moteur-%C3%A0-double-cage) est basé sur le circuit équivalent suivant (ou la puissance mécanique produite \$P_{mec} = I_{21}^2(\frac{1-s}{s})R_{21}' + I_{22}^2(\frac{1-s}{s})R_{22}'\$, où \$s\$ est le [_slip_](https://www.engineeringtoolbox.com/electrical-motor-slip-d_652.html)):
 
 ![plot](./Images/InkedEquivalent-circuits-for-induction-motors-a-Single-cage-b-Double-cage_W640.jpg) 
 
@@ -102,26 +102,26 @@ Cela constitue un problème, car comme le contenue fréquentiel contient désorm
 
 Les pulsations sont généré à la fréquence fixe d'environ 330 kHz. 
 
-Solutions à venir...
+#### Solution #1: filtre passe-bas analogique
+À venir...
 
-
+#### Solution #2: Utiliser un vrai générateur de fonction DDS
+À venir...
 
 ## Mesures
  À venir... (protocole, callibration etc.)
 ## Analyse
-À venir...
-### Hypothèse
-* résistance de puissance purement résistive
-* mesure simultannée?
-  
-à venir... (code python, incertitude)
+À venir... (Méthode d'identification, Calcul d'incertitude, etc.)
+### Hypothèses considérées
+* La résistance de puissance est purement résistive.
+* Les mesures de courant et de tension sont suffisament simultannée. (Possibilité d'interpoler avec la mesure adjacente pour tenir compte du décalage...)
+
 ## Résultats
-À venir...
+À venir... (Comparaison avec les courbes de performance du fabricant)
 
 ## Amélioration possible
 * Utiliser un vrai amplificateur de mesure (INA118, INA128, etc.)
 * Contrôle du courant automatique (contrôle du volume audio...)
-
 
 ## Comment reconnaître un moteur à double cage?
 
