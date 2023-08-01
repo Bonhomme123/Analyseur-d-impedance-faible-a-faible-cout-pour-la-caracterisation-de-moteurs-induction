@@ -10,21 +10,27 @@ from datetime import datetime
 import time
 import pygame
 
+import os
 
 
-class experiment():
+
+class InductionMotorAnalyzer(): # trouver un meilleur nom?
+
+    """ 
+    L'objet interface est l'objet appelé pour utilisé l'interface.
+    """
 
     def __init__(self):
-        self.GUI()
-        self.callibrationSequence()
-        self.experiment_loop()
-        self.analyse()
-        self.displayResult()
-
+        self.GUI()                  # Ouvre l'interface graphique
+        self.experiment_loop()      # Boucle d'acquisition
+        self.analyse()              # Analyse des données (à implémenter)
+        self.displayResult()        # Afficher les résultats (à implémenter)
 
     def GUI(self):
         
-        """Interface garphique"""
+        """
+        Interface garphique pour choisir les paramètres d'acquisitions.
+        """
 
         self.window = tk.Tk()
         self.window.title("Estimateurs de paramètre du modèle de moteur à induction")
@@ -37,7 +43,7 @@ class experiment():
         
         baud_label = tk.Label(COM_info_frame, text="Baudrate")
         baud_label.grid(row=0, column=0)
-        self.baud_combobox = ttk.Combobox(COM_info_frame, values=[9600, 19200, 2880, 38400, 5700, 76800, 115200, 230400, 460800, 576000, 921600])
+        self.baud_combobox = ttk.Combobox(COM_info_frame, values=[9600, 19200, 2880, 38400, 5700, 76800, 115200, 230400, 460800, 576000, 921600]) # Valeur les + communes
         self.baud_combobox.current(10)
         self.baud_combobox.grid(row=0, column=1)
             
@@ -63,10 +69,10 @@ class experiment():
 
         freq_label = tk.Label(acquisition_info_frame, text="Plage de fréquences d'excitation(Hz)")
         freq_label.grid(row=1, column=0)
-        hLeft = tk.DoubleVar(value=10)
-        hRight = tk.DoubleVar(value=150)
+        hLeft = tk.DoubleVar(value=0)
+        hRight = tk.DoubleVar(value=1000)
         self.freq_rangeSlider = RangeSliderH(acquisition_info_frame, [hLeft, hRight], padX=20, min_val=0,
-                                            max_val=300, Width=350, Height=40, bar_radius=5, font_size=11, 
+                                            max_val=1500, Width=350, Height=40, bar_radius=5, font_size=11, 
                                                 font_family="TkDefaultFont", bgColor=self.window.cget('bg'))
         self.freq_rangeSlider.grid(row=1, column=1)
 
@@ -94,10 +100,10 @@ class experiment():
         fich_frame.grid(row=0, column=0)
 
 
-        fich_label = tk.Label(fich_frame, text="Nom du fichier:")
+        fich_label = tk.Label(fich_frame, text="Nom du dossier:")
         fich_label.grid(row=0, column=0)
         self.fich_entry = tk.Entry(fich_frame, width=50, justify="center")
-        self.fich_entry.insert(0, datetime.now().strftime("Data/exp_du_%m-%d-%Y_%Hh%M.txt"))
+        self.fich_entry.insert(0, datetime.now().strftime("Data/exp_du_%m-%d-%Y_%Hh%M"))
         self.fich_entry.grid(row=0, column=1)
 
         button = tk.Button(export_info_frame, text="Démarrer l'échantillonage", command=self.setValues, width=40,)
@@ -109,6 +115,11 @@ class experiment():
         self.window.mainloop()
 
     def setValues(self):
+
+        """
+        La fonction setValues attribue les valeurs recceuillis par GUI() à l'objet InductionMotorAnalyzer. Elle est activé automatiquement lorsque le bouton "Démarrer". 
+        """
+
         self.baudrate = self.baud_combobox.get()
         self.time = float(self.temps_entry.get())
         self.port = self.port_entry.get()
@@ -118,43 +129,39 @@ class experiment():
         self.samplingRate = float(self.freq_acquisition_entry.get())
         self.window.destroy()
 
-    def callibrationSequence(self):
-        print("Callibration...", end='')
-        
-        n = 10
-        # for i in range(n):
-        #     self.generateSound()
-
-        
-        time.sleep(0.5)
-        print('\r                            \r', end="") 
-        pass
-
     def experiment_loop(self):
+
+        """
+        Boucle d'acquisition. Cette fonction, pour chaque fréquence d'excitation, donne les instructions nécessaires à l'utilisateur, lis les données sur le temps demandé, et les enregistres dans un (ou des) fichier.
+        """
         self.freqs = np.linspace(*self.freq_range, self.Npts)
         
         self.ser = serial.Serial(
         port=self.port,
         baudrate=self.baudrate,
         timeout=1)
-        
-        with open(self.file_name, 'a') as file:
+        os.mkdir(self.file_name)
+        with open(self.file_name + "/info.txt", 'a') as file:
                 file.write(f"Baudrate: {self.baudrate}\nPort: {self.port}\nDuree par point: {self.time}\nPalge de frequences: {self.freq_range}\nNombre de points: {self.Npts}\nSamplingRate: {self.samplingRate}\n")
 
         for i, freq in enumerate(self.freqs):
             freq = int(freq)
             
-            with open(self.file_name, 'a') as file:
-                file.write(f'\n\nFrequence #{i+1}: {freq} Hz\n')
-            
             self.sourceInstruction(freq)
+
+            sub_filename = self.file_name + f"/{freq} Hz.txt"
+            with open(sub_filename, 'a') as file:
+                file.write(f'\n\nFrequence #{i+1}: {freq} Hz\n')
+                file.write(f'Note: {self.note}\n\n')
+                file.write("index,tension,courant\n")
+            
             #self.generateSound(freq, self.time + 0.5)
             print(f"Test {i+1} sur {self.Npts}. Fréquence: {freq:.1f} Hz                  \r", end="")
 
             samplingBytesNumber = int(self.samplingRate*self.time*16)#14 = num de char par ligne
 
             self.ser.flush() # CLEAR SERIAL BUFFER
-            with open(self.file_name, 'ab') as file:
+            with open(sub_filename, 'ab') as file:
                 while samplingBytesNumber > 0:
                     t1 = time.time()
 
@@ -166,6 +173,7 @@ class experiment():
             #self.sound.stop()
             time.sleep(1)
         self.ser.close()
+        print("\rAcquisition terminé.                     ", end="")
 
     def generateSound(self, freq, duration):
         
@@ -193,8 +201,21 @@ class experiment():
 
         instruction_label = tk.Label(frame, text=f"Veuillez régler le générateur de fonction à {freq} Hz.", font=("TkDefaultFont", 18))
         instruction_label.grid(row=0, column=0)
-        button = tk.Button(frame, text="Poursuivre l'échantillonage", command=self.instructionWindow.destroy, width=40, height=5, bg='white')
+
+        noteFrame = tk.Frame(frame)
+        noteFrame.grid(row=2, column=0)
+        noteLabel = tk.Label(noteFrame, text="Note particulière: ")
+        noteLabel.grid(row=0, column=0)
+        self.noteEntry = tk.Entry(noteFrame)
+        self.noteEntry.grid(row=0, column=1)
+
+        for widget in noteFrame.winfo_children(): #espace entre les trucs
+            widget.grid_configure(padx=20, pady=30)
+
+        button = tk.Button(frame, text="Poursuivre l'échantillonage", command=self.closeInstruction, width=40, height=5, bg='white')
         button.grid(row=1, column=0)
+
+        #AJOUTER UNE ENTRY POUR PRENDRE DES NOTES:
 
 
         for widget in frame.winfo_children(): #espace entre les trucs
@@ -202,7 +223,12 @@ class experiment():
         
         self.instructionWindow.mainloop()
 
+    def closeInstruction(self):
+        self.note = self.noteEntry.get()
+        self.instructionWindow.destroy()
+
     def check_saturation(self):
+        """ Fonction qui vérifie que les données recceuillis ne sont pas saturé. Retourne True si la saturation est détecté et False sinon"""
         pass
 
     def analyse(self):
@@ -214,4 +240,4 @@ class experiment():
         pass
 
 
-experiment()
+InductionMotorAnalyzer()
