@@ -76,7 +76,7 @@ Afin d'utiliser au maximum les capacités du micro-contrôleur, la seconde méth
 
 Les premiers tests montre qu'une fréquence d'échantillonage de plus de 6000Hz est possible, ce qui représente 40 échantillons par cycle à 150 Hz.
 ### Interface graphique et analyse
-Afin que l'outil soit conviviale à utiliser, une [interface graphique](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/analyse.py) est dévelopée en utilisant le module *Tkinter* sur *Python*. Cette interface graphique permet donc d'enregistrer les paramètres et les données recceuillis par le port de série. 
+Afin que l'outil soit conviviale à utiliser, une [interface graphique](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/Interface.py) est dévelopée en utilisant le module *Tkinter* sur *Python*. Cette interface graphique permet donc d'enregistrer les paramètres et les données recceuillis par le port de série. 
 
 <img src="./Images/GUI.png" alt="drawing" style="width:600px;"/>
 
@@ -105,6 +105,7 @@ Une solution utilisant un filtre RC passe-bas analogique est testé, mais les r�
 Entre en scène le générateur de fonction FG-100. Cette solution devra être testée.
 
 ## Mesures
+L'ADC de notre ESP32 a été carctérisé [ici](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/callibration%20esp32.ipynb)
  À venir... (protocole, callibration etc.)
 ## Analyse
 À venir... (Méthode d'identification, Calcul d'incertitude, etc.)
