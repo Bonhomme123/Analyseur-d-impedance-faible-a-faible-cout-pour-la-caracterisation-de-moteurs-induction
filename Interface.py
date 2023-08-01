@@ -142,7 +142,7 @@ class InductionMotorAnalyzer(): # trouver un meilleur nom?
         timeout=1)
         os.mkdir(self.file_name)
         with open(self.file_name + "/info.txt", 'a') as file:
-                file.write(f"Baudrate: {self.baudrate}\nPort: {self.port}\nDuree par point: {self.time}\nPalge de frequences: {self.freq_range}\nNombre de points: {self.Npts}\nSamplingRate: {self.samplingRate}\n")
+                file.write(f"Baudrate: {self.baudrate}\nPort: {self.port}\nDuree par point: {self.time}\nPlage de frequences: {self.freq_range}\nNombre de points: {self.Npts}\nSamplingRate: {self.samplingRate}\n")
 
         for i, freq in enumerate(self.freqs):
             freq = int(freq)

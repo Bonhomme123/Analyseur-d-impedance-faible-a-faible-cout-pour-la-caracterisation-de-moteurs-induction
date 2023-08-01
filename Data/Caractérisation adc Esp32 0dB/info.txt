@@ -1,0 +1,8 @@
+Baudrate: 921600
+Port: COM3
+Duree par point: 10.0
+Palge de frequences: [0.0, 1205.0]
+Nombre de points: 15
+SamplingRate: 6000.0
+
+PAS EN HZ, EN mV
