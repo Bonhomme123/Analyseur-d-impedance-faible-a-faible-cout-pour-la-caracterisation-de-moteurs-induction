@@ -105,7 +105,8 @@ Une solution utilisant un filtre RC passe-bas analogique est testé, mais les r�
 Entre en scène le générateur de fonction FG-100. Cette solution devra être testée.
 
 ## Mesures
-L'ADC de notre ESP32 a été carctérisé [ici](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/callibration%20esp32.ipynb)
+L'ADC de notre ESP32 a été carctérisé [ici](https://github.com/Bonhomme123/Analyseur-d-impedance-faible-a-faible-cout-pour-la-caracterisation-de-moteurs-induction/blob/main/callibration%20esp32.ipynb).
+
  À venir... (protocole, callibration etc.)
 ## Analyse
 À venir... (Méthode d'identification, Calcul d'incertitude, etc.)
