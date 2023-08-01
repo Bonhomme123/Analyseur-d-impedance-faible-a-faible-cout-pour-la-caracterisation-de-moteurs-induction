@@ -163,11 +163,10 @@ class InductionMotorAnalyzer(): # trouver un meilleur nom?
             self.ser.flush() # CLEAR SERIAL BUFFER
             with open(sub_filename, 'ab') as file:
                 while samplingBytesNumber > 0:
-                    t1 = time.time()
 
                     inWaiting = self.ser.inWaiting()
                     if (inWaiting > 0):
-                        file.write(self.ser.read(self.ser.inWaiting()) )
+                        file.write(self.ser.read(self.ser.inWaiting()) )    # TROUVER UN MOYEN DE PAS LIRE LA PREMIÈRE BATCH. On voie le signal se placer... (peut-être juste couper après?)
                         samplingBytesNumber -= inWaiting
             self.check_saturation()
             #self.sound.stop()
