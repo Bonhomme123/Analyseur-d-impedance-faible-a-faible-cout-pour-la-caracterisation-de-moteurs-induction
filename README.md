@@ -1,7 +1,7 @@
 # Analyseur d'impédance faible à faible coût pour la caracterisation de moteurs induction
 Développement d'un analyseur d'impédance à faible coût dans le but de caractériser un modèle de moteur à induction.  -  **Low cost developpement of an impedance analyzer for induction motor caracterisation.** ***ENGLISH README comming soon.***
 
-**OPEN-SOURCE:** Tous les codes utilisés sont libre d'utilisation.
+**OPEN-SOURCE:** Tous les codes utilisés sont libres d'utilisation.
 
 ## Objectif
 
